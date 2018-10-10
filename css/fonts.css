@@ -1,0 +1,21 @@
+@font-face{
+
+font-family: 'Exo';
+
+src: url(/fonts/Exo2-Regular.otf);
+
+/*
+src: url('../fonts/WebFont-Italic-Bold.eot?iefix') format('eot'),
+
+url('../fonts/WebFont-Italic-Bold.woff') format('woff'),
+
+url('../fonts/WebFont-Italic-Bold.ttf') format('truetype'),
+
+url('../fonts/WebFont-Italic-Bold.svg#webfont') format('svg');
+
+font-weight: bold;
+
+font-style: italic;
+*/
+
+}

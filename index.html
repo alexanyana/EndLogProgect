@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='myApp'>
+
+<head>
+	<meta charset="UTF-8">
+	<title>care_shop</title>
+	
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="node_modules/ng-dialog/css/ngDialog.min.css">
+	<link rel="stylesheet" href="node_modules/ng-dialog/css/ngDialog-theme-default.min.css">
+		<link rel="stylesheet" href="css/fonts.css">
+
+	<link rel="stylesheet" href="css/style.css">
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+<!--	<link rel="stylesheet" href="css/media.css" media="all and (max-width:900px)">-->
+
+
+</head>
+
+<body  ng-controller='mainCtrl as ctrl'>
+	<nav id="body_navigate">
+		<div id="nav_left">
+			<ul class="nav_ul_decor">
+				<li class="nav_li_decor"><a class="nav_a_decor" href="#/">CARE SHOP</a></li>
+			
+				<li class="nav_li_decor"><a class="nav_a_decor" href="">КАТЕГОРІЇ</a>
+				<ul class="nav_sub_menu">
+				<li class="nav_li_decor"><a class="nav_a_decor" href="#/hairPage" ng-click="SelectFunc()">ВОЛОССЯ</a></li>
+				<li class="nav_li_decor"><a class="nav_a_decor" href="#/bodyPage" ng-click="SelectFunc()">ТІЛО</a></li>
+				<li class="nav_li_decor" ng-click="SelectFunc()"><a class="nav_a_decor" href="#/nailPage">НІГТІ</a></li>
+				<li class="nav_li_decor" ng-click="SelectFunc()"><a class="nav_a_decor" href="#/facePage">ОБЛИЧЧЯ</a></li>
+				</ul>
+				</li>
+				
+<!--				<li class="nav_li_decor"><a class="nav_a_decor" href="">БРЕНДИ</a></li>-->
+				<li class="nav_li_decor"><a class="nav_a_decor" href="#/delivpayPage">ОПЛАТА І ДОСТАВКА</a></li>
+				
+				<li class="nav_li_decor"><a class="nav_a_decor" href="#/contactPage">КОНТАКТИ</a></li>
+				
+			</ul>
+		</div>
+		<div id="nav_right"><div ng-click="YourOrder()">
+			<a  href="#/ordersPage"><div  id="nav_kosh">
+				<div id="nav_kosh_pnumb">
+					<p>{{num_goods}}</p>
+				</div>
+				</div>
+				
+			</a></div>
+			<a id="nav_user_a" href="#/ordersPage"><div id='nav_user' href="#/">
+				<div id='nav_user_img'></div><div id="user_name"><p>{{lett_per[0]}}</p></div></div></a>
+<!--				<button ng-click="AddGood()">Add</button>-->
+		<button class="nav_but btn" ng-if="admin==true" type="button"><a class="nav_but" href="" ng-click="Admin_panel()">Адмін панель</a></button> 
+			<button class="nav_but btn" type="button" ng-if="enterend==false"><a class="nav_but" href="#/loginPage" >Увійти</a></button> 
+			<button class="nav_but btn" ng-if="enterend==true" type="button"><a class="nav_but" href="" ng-click="End_session()">Вийти</a></button> 
+			<!--			<input class="nav_but btn" type="button" value="Вийти">-->
+			  
+
+
+		</div>
+
+	</nav>
+	
+
+
+	
+	 <ng-view ></ng-view>
+    
+<!--
+    <div style='width:100px; height:100px' ng-repeat="x in ctrl.good track by $index" class="col-md-3 list_good">
+	{{x.name}}
+ <img style="border: 1px, solid, black" src="url(img/{{x.img}})">
+  
+ <img style="border: 1px, solid, black" src="image/jpeg;base64,{{x.img}}">
+ <div class="photo_good" style='background-image: url(image/jpg;base64,{{x.img}}'></div>
+   <div class="photo_good" style='width:100px; height:100px; background-image: url(img/{{x.img}})'></div>
+  <input type="button" value="В корзину">
+  </div>
+  <table class="table table-bordered table-responsive table-striped table-hover">
+    <tr>
+        <td>id</td>
+        <td ng-click="sorter='-name'">name</td>
+        <td ng-click="sorter='-sname'">sname</td>
+        <td ng-click="sorter='-age'">age</td>
+        <td ng-click="sorter='-phone'">phone</td>
+        <td ng-click="xxx=!xxx">img</td>
+    </tr>
+     <tr ng-hide='yy[$index]' ng-repeat="person in ctrl.good |orderBy:sorter |filter:text track by $index" >
+        <td>{{$index+1 }} з {{ctrl.person.length}}</td> 
+        <td>{{person.name |uppercase}}</td> 
+        <td ng-class="{'text-danger':person.sname.indexOf(5)>=0}">{{person.sname |lowercase}}</td> 
+        <td>{{person.age}}</td> 
+        <td><button class="btn" ng-class="{'btn-danger disabled':person.age==29||person.age==46}">delete</button></td>
+        <td ng-click='yy[$index]=!yy[$index]'><div style="width:200px; height:200px; background-size: cover;; background-position: center; background-image: url(img/{{person.img}})" ng-hide="xxx"></div></td>    
+    </tr>
+</table>
+-->
+	<footer id="body_footer">
+		<div id="foot_nav">
+			<ul class="foot_ul_decor">
+				<li class="foot_li_decor"><a class="foot_a_decor" href="#/">Про нас</a></li>
+<!--
+				<li class="foot_li_decor"><a class="foot_a_decor" href="">Категорії</a></li>
+				<li class="foot_li_decor"><a class="foot_a_decor" href="">Бренди</a></li>
+-->
+				<li class="foot_li_decor"><a class="foot_a_decor" href="#/delivpayPage">Оплата і доставка</a></li>
+				<li class="foot_li_decor"><a class="foot_a_decor" href="#/contactPage">Контакти</a></li>
+				
+			</ul>
+			</div>
+		<div class="foot_elem"><div class="food_div_contact"><a href="" id="foot_div_a">Умови використання сайту</a></div>
+			<div class="food_div_contact"><p>МИ ЗАВЖДИ НА ЗВ'ЯЗКУ!</p>
+					<p>Ви можете написати нам листа careShop@gmail.com, зателефонувати за телефонами <br>(044) 374 03 83<br>0(800) 50 77 40</p></div></div>
+		<div class="foot_elem"><p>© Care Shop — 2018 </p></div>
+		
+	</footer>
+	
+	
+	 <script src="js/angular.min.js"></script>
+    <script src="js/angular-route.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="node_modules/angular-base64-upload/dist/angular-base64-upload.min.js"></script>
+    <script src="node_modules/ng-dialog/js/ngDialog.min.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/controllers/mainController.js"></script>
+<!--    <script src="js/controllers/secondController.js"></script>-->
+    <script src="js/servicess/mainService.js"></script>
+    
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+<div id='regis_page'>
+	<form id="reg_user" name="enter" method="post" action="" novalidate><div id="div_span_decor"><h4 class="">Реєстрація нового користувача</h4></div>
+	<div class="input_text">
+		
+		<label class="lable_input" for="name" >Ім'я: *</label>
+		<input ng-model="per.name" id="name" name="name" type="text" placeholder="name"/></div>
+		<div class="input_text">
+		<label class="lable_input" for="sname" >Прізвище: *</label>
+		<input ng-model="per.sname" id="sname" name="sname" type="text" placeholder="surname" /></div>
+		<div class="input_text">
+		<label class="lable_input" for="login" >Логін: *</label>
+		<input ng-model="per.login" id="login" name="login" type="text" placeholder="login" /></div>
+		<div class="input_text">
+		<label class="lable_input" for="phone" >Телефон: *</label>
+		<input ng-model="per.phone" id="phone" name="phone" type="text" placeholder="phone" /></div>
+		<div class="input_text">
+		<label class="lable_input" for="pass" >Пароль: *</label>
+		<input ng-model="per.pass" id='pass' name="password" type="password" placeholder="password" /> </div>
+		<div><p style="color: red">{{error_text}}</p></div>
+		<div id="div_input_btn"><input name="reset" class="btn login_btn" value="Reset" type="reset" ng-click="CleanNewUser()" />
+<!--		<button class="btn login_btn" ng-click="AddNewUser()" >Send</button>-->
+		<input name="submit" class="btn login_btn" value="Send" type="button" ng-class="{'disabled':!per.name||!per.sname||!per.login||!per.phone||!per.pass}" ng-click="AddNewUser()" /></div>
+	</form>
+	</div>
+<!--	    -->

@@ -1,0 +1,19 @@
+<div id='login_page'>
+	<form id="enter_user" name="enter" method="post" action="" novalidate><div id="div_span_decor"><h4 class="">Вхід до особистого кабінету</h4></div>
+	<div class="input_text">
+		<label class="lable_input" for="login" >Логін чи e-mail:</label>
+		<input ng-model="logper.login" id="login" name="login" type="text" placeholder="login" /></div>
+		<div class="input_text">
+		<label  class="lable_input" for="login" >Пароль:</label>
+		<input ng-model="logper.pass" id='pass' name="password" type="password" placeholder="password" /> </div>
+		<div class="input_text">
+<!--			<a href="">Забули пароль?</a>-->
+			<a href="#/regisPage">Зареєструватися</a>
+		</div>
+		<div id="div_input_btn">
+			<span style="font-size:12px; font-weight:bold; color:red">{{author_error_text}}</span>
+		<input name="reset" class="btn login_btn" value="Reset" type="reset" ng-click="CleanCtrlUser()" />
+		<input ng-click="getCtrlUsers()" value="Enter" class="btn login_btn" ng-class="{'disabled':!logper.login||!logper.pass}" type="button" /></div>
+	</form>
+	</div>
+	   

@@ -1,0 +1,29 @@
+<div class="order_page">
+
+<div class="order_header"><h2>Ваше замовлення</h2></div>
+ <div id="num_order"><span>В кошику: </span><span> {{num_goods}}</span></div>
+
+ <div class="goods_order" ng-repeat="x in ctrl.goods_order track by $index" >
+	 <div class="kosh_photo_good" style='background-image: url(../img/{{x.photo}})'></div><div class="short_info_basket">
+	 <span style="font-weight: 600; line-height:10px" >{{x.name_good}}</span><br>
+	 <span style="font-style: italic;"> {{x.brand}}</span> <br>
+
+ 	<div class="edit_good">
+ 		<button ng-click="MinusOne(x)" class="order_btn order_btn_minus "></button>
+ 		<span id="span_number_goods">{{x.number_goods}}</span>
+ 		<button  ng-click="PlusOne(x)" class="order_btn order_btn_plus"></button>
+ 		<button ng-click="DeleteGood(x)" class="order_btn_delete"></button>
+ 	</div>
+	 	
+	 </div>
+	 <div ><div class="code_price">Код товару:<br> {{x.code}}</div><div class="price_code">{{x.price*x.number_goods}} грн </div></div>
+	
+ </div>
+	<div id="common_sum_order"><span>Загальна сума: </span> <span> {{common_price}} грн</span></div>
+	<div id="send_order">
+	<button ng-click="SetOrder()" id="btn_send_order">Замовити</button>
+		<div style="width:150px; margin-left:15px; font-size: 14px; font-weight: bold"><span style="color:red">{{error_message}}</span><span style="color:green">{{success_message}}</span></div>
+	</div>
+		
+  
+</div>

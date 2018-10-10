@@ -1,0 +1,65 @@
+<div class="blur" ng-if="details==true" style='height:{{blur_h}}px'></div>
+<div id="goods_list"  >
+	
+	 
+
+ <div class="col-md-3" id="main_categ_nav">
+ <h2>Тіло</h2>
+ <h4>Бренди</h4>
+ 	<select ng-model="br"  >
+       <option ng-repeat="brand in ctrl.dataBrands track by $index" ng-value="brand.Brand">
+          {{brand.Brand}}
+       </option>
+       <option value="">Усі бренди</option>
+        </select>
+
+ 	<h4>Групи</h4>
+ 	<select ng-model="gr"  >
+       <option ng-repeat="group in ctrl.dataGroups track by $index" ng-value="group.Sub_category">
+          {{group.Sub_category}}
+       </option>
+       <option value="">Усі групи</option>
+        </select>
+
+ 	<h4>Країни</h4>
+ 	 <select ng-model="countr" >
+       <option ng-repeat="country in ctrl.dataCountries track by $index" ng-value="country.Country">
+          {{country.Country}}
+       </option>
+       <option value="">Усі країни</option>
+        </select>
+
+ 	<h4>Ціна</h4>
+	 <div class="sort_price">
+		 <button class="price_btn" ng-click="sorted='Price'">По зростанню</button>
+		 <button  class="price_btn" ng-click="sorted='-Price'">По спаданню</button>
+	 </div>
+ 	
+ </div>
+ <div class="col-md-9 outside_list" >
+  <div ng-repeat="x in ctrl.dataGoods | orderBy:sorted |filter:{Country:countr} |filter:{Sub_category:gr } |filter:{Brand:br} track by $index" class="col-md-3 col-sm-4 list_good">
+ 
+ 
+  <div class="photo_good" style='background-image: url(../img/{{x.Photo}})'></div>
+  <div class="good_name"><p>{{x.Name_good}}</p></div>
+ <div class="good_buttons"><input type="button" class=" own_style_btn btn_details" value="" ng-click="IncrSize(x)">
+  <input type="button" class=" own_style_btn btn_backet" value="" ng-click="AddGood(x)"></div>
+  </div>
+  </div>
+	</div>
+<div ng-if="details==true" class='big_size'>
+
+<button ng-click="SmallSize()" class=" own_close_btn"></button>
+
+	<div class="big_photo_good" style='background-image: url(../../img/{{choose_good.Photo}})'></div>
+  <div class="good_name"><p>{{choose_good.Name_good}}</p></div>
+	<div class="infoAbout_good"><div class="info_info"><span class="style_font_weig">Країна виробник: </span>{{choose_good.Country}}</div><div class="info_weight">{{choose_good.Weight}}</div>
+		
+	</div>
+	<div class="infoAbout_good">
+<div class="info_info"><span class="style_font_weig">Код товару: </span>{{choose_good.code_good}}</div><div class="info_info"><span class="style_font_weig"> {{choose_good.Price}} грн </span></div>
+	</div>
+	<div class="infoAbout_good btn_div_koshyk">
+		<input class="btn_koshyk" type="button" value="В корзину" ng-click="AddGood(choose_good)"></div>
+</div>
+	
